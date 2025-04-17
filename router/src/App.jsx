@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -38,25 +38,25 @@ const App = () => {
     <div>
        <button onClick={() => navigate('/basket')}>Basket</button>
        <button onClick={() => navigate('/wish')}>Wish</button>
-      <div>
+      <div style={{display:'flex', flexWrap:'wrap',gap:'15px'}}>
         {data &&
           data.map((item) => (
             <div style={{ width: "15%" }} key={item.id}>
               <div>
-                <img
+                <div style={{width:'200px', height:'200px',objectFit:'cover'}}><img
                   src={item.image}
                   alt={item.title}
-                  style={{ width: "100%" }}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{item.title}</h5>
-                  <p className="card-text"></p>
-                  <p className="card-text">${item.price}</p>
+                  style={{ width: "100%",height:'100%' }}
+                /></div>
+                <div className="card" >
+                  <h5 >{item.title}</h5>
+                  <p></p>
+                  <p >${item.price}</p>
                   <div>
                     <button onClick={() => addToBasket(item)}>
                       Add to Cart
                     </button>
-                    <button onClick={() => addToWish(item)}>♡ Wishlist</button>
+                    <button onClick={() => addToWish(item)}>Wishlist</button>
                   </div>
                 </div>
               </div>
